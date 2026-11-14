@@ -1,8 +1,3 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
-  </ItemGroup>
-
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Núcleo del dominio: entidades, enums y reglas. Sin dependencias externas. -->
 </Project>
