@@ -4,6 +4,20 @@ Documento de trabajo. Resume el diagnóstico del estado actual del proyecto y de
 
 Fecha del diagnóstico: 14/11/2026. Rama: `luis_Acu`.
 
+## Estado de ejecución
+
+Las 9 fases están **completadas**: hay un commit por fase en la rama `luis_Acu` (de "Fase 0" a "Fase 8"). Decisiones que se ajustaron respecto al plan original, con su motivo:
+
+| Tema | Plan original | Ejecutado | Motivo |
+|---|---|---|---|
+| Versión de .NET | .NET 8 | **.NET 10 (LTS)** | El soporte de .NET 8 terminó el 10/11/2026; .NET 10 tiene soporte hasta noviembre de 2028. |
+| Herramienta del frontend | Actualizar dentro de la línea actual | `@quasar/app-vite` 3 + Vue Router 5 + Vitest 5 | Era la única forma de dejar `npm audit` en 0 vulnerabilidades. |
+| Migraciones EF | Fase 0 | Fase 1 | El modelo se rediseñó en la Fase 1; generarlas antes habría dejado migraciones inútiles. |
+| Separación en capas | Fase 2 | Fase 1 | La reescritura del modelo de cuentas ya exigía la nueva estructura. |
+| Estado "Completada" | Estado guardado | **Derivado** (confirmada y con la actividad ya finalizada) | Evita un proceso programado y no puede quedar desincronizado. |
+| Imágenes | Propias o con licencia | Portadas ilustradas generadas por destino, más una URL opcional | Ninguna imagen de terceros sin licencia en el repositorio. |
+| Pruebas E2E | Playwright opcional | Usado localmente para verificar la interfaz (capturas en escritorio y móvil), no incluido en el repositorio | Mantiene el repositorio liviano; la lógica está cubierta por 54 pruebas de backend y 15 de frontend. |
+
 ---
 
 ## 1. Cómo se hizo el diagnóstico
