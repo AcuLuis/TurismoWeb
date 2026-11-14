@@ -9,7 +9,7 @@
       <EstadoEmpresaBanner :estado="perfil.estado" :motivo="perfil.motivoEstado" />
       <q-banner v-if="perfil.estado === 'Verificada'" rounded class="bg-green-1 q-mb-lg">
         <template #avatar><q-icon name="verified" color="positive" /></template>
-        Empresa verificada<template v-if="perfil.verificadaEn"> el {{ formatFechaHora(perfil.verificadaEn).split(',')[0] }}</template>.
+        Empresa verificada<template v-if="perfil.verificadaEn"> el {{ formatFechaDeUtc(perfil.verificadaEn) }}</template>.
         Tus actividades muestran el sello de verificación.
       </q-banner>
 
@@ -50,7 +50,7 @@ import { useAvisos } from '@/composables/useAvisos'
 import { authApi, empresaApi } from '@/services/api'
 import { useAuthStore } from '@/stores/auth'
 import { erroresDeCampo, mensajeError } from '@/utils/errores'
-import { formatFechaHora } from '@/utils/formato'
+import { formatFechaDeUtc } from '@/utils/formato'
 import * as reglas from '@/utils/reglas'
 
 const { requerido, maxLongitud } = reglas

@@ -70,7 +70,14 @@ export function formatFechaHora(valorUtc) {
   return new Intl.DateTimeFormat(LOCALE, { dateStyle: 'medium', timeStyle: 'short' }).format(d)
 }
 
-const formatoSoles = new Intl.NumberFormat(LOCALE, {
+/** Solo la fecha (formato corto) de una marca de tiempo UTC del servidor. */
+export function formatFechaDeUtc(valorUtc) {
+  if (!valorUtc) return ''
+  const texto = String(valorUtc)
+  return formatFecha(new Date(/[zZ]|[+-]\d{2}:\d{2}$/.test(texto) ? texto : `${texto}Z`))
+}
+
+const formatoSoles =new Intl.NumberFormat(LOCALE, {
   style: 'currency',
   currency: 'PEN',
   minimumFractionDigits: 2,

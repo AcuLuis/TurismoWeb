@@ -132,11 +132,15 @@ internal sealed class DatosDemo(TurismoDbContext db, IHasherContrasenas hasher, 
         var cancelada = Reservar(carlos, colca, 2, EstadoReserva.Confirmada);
         cancelada.Cancelar(reloj.UtcAhora, "Cambio de planes del cliente.");
 
-        Reservar(ana, vinicuncaPasada, 2, EstadoReserva.Confirmada);
-        Reservar(carlos, vinicuncaPasada, 1, EstadoReserva.Confirmada);
-        Reservar(lucia, vinicuncaPasada, 1, EstadoReserva.Confirmada);
-        Reservar(ana, ballestasPasada, 2, EstadoReserva.Confirmada);
-        Reservar(lucia, ballestasPasada, 3, EstadoReserva.Confirmada);
+        // Reservas de salidas ya realizadas: se crearon semanas antes de la actividad
+        var historicas = new (Reserva Reserva, int DiasAtras)[]
+        {
+            (Reservar(ana, vinicuncaPasada, 2, EstadoReserva.Confirmada), 95),
+            (Reservar(carlos, vinicuncaPasada, 1, EstadoReserva.Confirmada), 62),
+            (Reservar(lucia, vinicuncaPasada, 1, EstadoReserva.Confirmada), 40),
+            (Reservar(ana, ballestasPasada, 2, EstadoReserva.Confirmada), 125),
+            (Reservar(lucia, ballestasPasada, 3, EstadoReserva.Confirmada), 33),
+        };
 
         // --- Reseñas ---
         db.Resenas.AddRange(
@@ -146,6 +150,11 @@ internal sealed class DatosDemo(TurismoDbContext db, IHasherContrasenas hasher, 
             CrearResena(ana, ballestasPasada, 5, "Vimos pingüinos y cientos de lobos marinos. La lancha era cómoda y segura."));
         // Lucía completó Islas Ballestas pero aún no la reseña: permite probar el flujo de reseñas.
 
+        await db.SaveChangesAsync(ct);
+
+        // La auditoría asigna "ahora" al crear; se ajusta la fecha de las reservas históricas
+        foreach (var (reserva, diasAtras) in historicas)
+            reserva.CreadoEn = reloj.UtcAhora.AddDays(-diasAtras);
         await db.SaveChangesAsync(ct);
     }
 

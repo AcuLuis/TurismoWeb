@@ -25,6 +25,12 @@ const routes = [
       { path: 'empresa/actividades/:id(\\d+)/editar', name: 'empresa-actividad-editar', component: () => import('@/pages/empresa/ActividadFormPage.vue'), meta: { titulo: 'Editar actividad', requiereSesion: true, roles: ['Empresa'] } },
       { path: 'empresa/reservas', name: 'empresa-reservas', component: () => import('@/pages/empresa/ReservasRecibidasPage.vue'), meta: { titulo: 'Reservas recibidas', requiereSesion: true, roles: ['Empresa'] } },
       { path: 'empresa/perfil', name: 'empresa-perfil', component: () => import('@/pages/empresa/PerfilEmpresaPage.vue'), meta: { titulo: 'Perfil de empresa', requiereSesion: true, roles: ['Empresa'] } },
+
+      // Administración
+      { path: 'admin', name: 'admin-panel', component: () => import('@/pages/admin/PanelAdminPage.vue'), meta: { titulo: 'Administración', requiereSesion: true, roles: ['Admin'] } },
+      { path: 'admin/empresas', name: 'admin-empresas', component: () => import('@/pages/admin/EmpresasAdminPage.vue'), meta: { titulo: 'Empresas', requiereSesion: true, roles: ['Admin'] } },
+      { path: 'admin/usuarios', name: 'admin-usuarios', component: () => import('@/pages/admin/UsuariosAdminPage.vue'), meta: { titulo: 'Usuarios', requiereSesion: true, roles: ['Admin'] } },
+      { path: 'admin/resenas', name: 'admin-resenas', component: () => import('@/pages/admin/ResenasAdminPage.vue'), meta: { titulo: 'Moderación de reseñas', requiereSesion: true, roles: ['Admin'] } },
     ],
   },
   {

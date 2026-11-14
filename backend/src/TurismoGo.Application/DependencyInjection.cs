@@ -1,6 +1,7 @@
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using TurismoGo.Application.Actividades;
+using TurismoGo.Application.Administracion;
 using TurismoGo.Application.Cuentas;
 using TurismoGo.Application.Empresas;
 using TurismoGo.Application.Reservas;
@@ -27,6 +28,7 @@ public static class DependencyInjection
         services.AddScoped<IActividadesEmpresaService, ActividadesEmpresaService>();
         services.AddScoped<IReservasService, ReservasService>();
         services.AddScoped<IEmpresaPerfilService, EmpresaPerfilService>();
+        services.AddScoped<IAdminService, AdminService>();
         return services;
     }
 }

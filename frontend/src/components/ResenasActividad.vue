@@ -35,7 +35,7 @@
             <q-avatar size="34px" color="teal-1" text-color="primary" class="text-weight-medium">{{ r.autor.charAt(0) }}</q-avatar>
             <div>
               <div class="text-weight-medium">{{ r.autor }}</div>
-              <div class="text-caption tg-texto-suave">{{ formatFechaHora(r.fecha).split(',')[0] }}</div>
+              <div class="text-caption tg-texto-suave">{{ formatFechaDeUtc(r.fecha) }}</div>
             </div>
             <q-space />
             <q-rating :model-value="r.valoracion" readonly size="16px" color="warning" icon="star_border" icon-selected="star" :aria-label="`${r.valoracion} de 5 estrellas`" />
@@ -53,7 +53,7 @@
 import { onMounted, ref, watch } from 'vue'
 import { catalogoApi } from '@/services/api'
 import { mensajeError } from '@/utils/errores'
-import { formatFechaHora, pluralizar } from '@/utils/formato'
+import { formatFechaDeUtc, pluralizar } from '@/utils/formato'
 
 const props = defineProps({ actividadId: { type: Number, required: true } })
 
