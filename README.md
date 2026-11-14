@@ -99,14 +99,26 @@ Las dependencias van hacia el dominio: `Api → Infrastructure → Application �
 - [Node.js](https://nodejs.org/) 22.22 o superior (se recomienda la 24)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/), para la base de datos. También sirve una instancia propia de SQL Server; ver [Configuración](#configuración).
 
-### 1. Base de datos
+### Opción rápida en Windows
+
+Haz doble clic en **`iniciar.bat`**, en la raíz del proyecto. El script:
+1. Comprueba los requisitos.
+2. Inicia Docker si hace falta.
+3. Levanta la base de datos.
+4. Abre la API y el sitio web en sus propias ventanas.
+
+Al final, el navegador se abre en http://localhost:9000. Para apagarlo todo, ejecuta **`detener.bat`**: los datos se conservan.
+
+### Opción manual (cualquier sistema operativo)
+
+#### 1. Base de datos
 
 ```bash
 cp .env.example .env        # opcional: cambia la contraseña o el puerto
 docker compose up -d        # SQL Server en localhost:14333
 ```
 
-### 2. API
+#### 2. API
 
 ```bash
 cd backend
@@ -119,7 +131,7 @@ En el entorno de desarrollo, al iniciar se aplican las migraciones y se cargan l
 - Documentación interactiva (Swagger): http://localhost:5259/swagger
 - Estado del servicio: http://localhost:5259/health
 
-### 3. Frontend
+#### 3. Frontend
 
 ```bash
 cd frontend
