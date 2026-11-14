@@ -12,6 +12,10 @@ body {
   color: #0f172a;
 }
 
+a {
+  color: $primary;
+}
+
 // Contenedor centrado con ancho máximo
 .tg-contenedor {
   width: 100%;

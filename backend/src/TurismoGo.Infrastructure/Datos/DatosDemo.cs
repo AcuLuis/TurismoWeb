@@ -143,8 +143,8 @@ internal sealed class DatosDemo(TurismoDbContext db, IHasherContrasenas hasher, 
             CrearResena(ana, vinicuncaPasada, 5, "Paisaje increíble y el guía estuvo pendiente de todo el grupo con la altura. Muy recomendado."),
             CrearResena(carlos, vinicuncaPasada, 4, "Muy buena organización. La caminata es exigente, lleven abrigo y bloqueador."),
             CrearResena(lucia, vinicuncaPasada, 5, "El desayuno y el almuerzo buffet muy ricos. Puntualidad en el recojo."),
-            CrearResena(ana, ballestasPasada, 5, "Vimos pingüinos y cientos de lobos marinos. La lancha era cómoda y segura."),
-            CrearResena(lucia, ballestasPasada, 4, "Excelente guía. El recorrido en la reserva fue un poco corto, pero valió la pena."));
+            CrearResena(ana, ballestasPasada, 5, "Vimos pingüinos y cientos de lobos marinos. La lancha era cómoda y segura."));
+        // Lucía completó Islas Ballestas pero aún no la reseña: permite probar el flujo de reseñas.
 
         await db.SaveChangesAsync(ct);
     }

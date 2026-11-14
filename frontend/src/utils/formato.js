@@ -52,7 +52,7 @@ export function formatRangoFechas(inicio, fin) {
   const mismoAnio = a.getFullYear() === b.getFullYear()
   const mismoMes = mismoAnio && a.getMonth() === b.getMonth()
   if (mismoMes) {
-    const mes = new Intl.DateTimeFormat(LOCALE, { month: 'short' }).format(b).replace('.', '')
+    const mes = new Intl.DateTimeFormat(LOCALE, { month: 'short' }).format(b).replace('.', '').toLowerCase()
     return `${a.getDate()} – ${b.getDate()} ${mes} ${b.getFullYear()}`
   }
   if (mismoAnio) {
