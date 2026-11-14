@@ -160,13 +160,17 @@ public sealed class ApiTests(ApiFactory fabrica) : IClassFixture<ApiFactory>, IA
         // Un turista nuevo se registra y reserva
         var registro = await _cliente.PostAsJsonAsync("/api/auth/registro/turista", new
         {
-            nombre = "Prueba", apellidos = "Integración", dni = "70000001", correo = "flujo@correo.pe", password = "Segura2026",
+            nombre = "Prueba", apellidos = "Integración", dni = "30000001", correo = "flujo@correo.pe", password = "Segura2026",
         });
         Assert.Equal(HttpStatusCode.Created, registro.StatusCode);
         var turista = (await registro.Content.ReadFromJsonAsync<JsonElement>(Json)).GetProperty("token").GetString()!;
 
-        var catalogo = await _cliente.GetFromJsonAsync<JsonElement>("/api/actividades?q=Colca", Json);
-        var actividadId = catalogo.GetProperty("items")[0].GetProperty("id").GetInt32();
+        // Primera salida de Andes Explorer con cupos suficientes
+        var catalogo = await _cliente.GetFromJsonAsync<JsonElement>("/api/actividades?q=Andes%20Explorer&tamano=50", Json);
+        var actividadId = catalogo.GetProperty("items").EnumerateArray()
+            .First(a => a.GetProperty("cuposDisponibles").GetInt32() >= 2 &&
+                        a.GetProperty("empresa").GetProperty("nombreComercial").GetString() == "Andes Explorer")
+            .GetProperty("id").GetInt32();
 
         var reserva = await _cliente.SendAsync(Peticion(HttpMethod.Post, "/api/reservas", turista, new { actividadId, cantidadPersonas = 2 }));
         Assert.Equal(HttpStatusCode.Created, reserva.StatusCode);

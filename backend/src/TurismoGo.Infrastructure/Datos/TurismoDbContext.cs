@@ -18,6 +18,12 @@ public sealed class TurismoDbContext(DbContextOptions<TurismoDbContext> options,
 
     public void LimpiarSeguimiento() => ChangeTracker.Clear();
 
+    /// <summary>
+    /// Solo para cargas de datos históricos: respeta el CreadoEn ya asignado en las entidades nuevas.
+    /// En el uso normal está desactivado y la fecha la pone siempre el servidor.
+    /// </summary>
+    internal bool ConservarFechasHistoricas { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(TurismoDbContext).Assembly);
@@ -39,7 +45,8 @@ public sealed class TurismoDbContext(DbContextOptions<TurismoDbContext> options,
         var ahora = _reloj.UtcAhora;
         foreach (var entrada in ChangeTracker.Entries<EntidadAuditable>())
         {
-            if (entrada.State == EntityState.Added)
+            // Los datos históricos (por ejemplo, la demo) pueden traer su propia fecha de creación
+            if (entrada.State == EntityState.Added && (!ConservarFechasHistoricas || entrada.Entity.CreadoEn == default))
                 entrada.Entity.CreadoEn = ahora;
             else if (entrada.State == EntityState.Modified)
                 entrada.Entity.ActualizadoEn = ahora;

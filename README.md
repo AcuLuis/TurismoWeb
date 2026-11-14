@@ -139,9 +139,23 @@ npm install
 npm run dev                 # http://localhost:9000
 ```
 
+## Datos de demostración
+
+En desarrollo, la base se llena automáticamente con datos ficticios para que la plataforma luzca en uso. Son coherentes con las reglas del negocio:
+
+| Qué | Cantidad aproximada |
+|---|---|
+| Empresas | 11: 8 verificadas, 2 pendientes de verificación y 1 suspendida |
+| Viajeros | 60 (uno de ellos suspendido) |
+| Salidas | Unas 170, entre próximas, ya realizadas, borradores y una cancelada por la empresa |
+| Reservas | Más de 1 000 en los últimos meses: confirmadas, pendientes, canceladas y rechazadas |
+| Reseñas | Unas 450, con valoraciones variadas y 2 ocultas por moderación |
+
+Los datos se generan siempre igual (semilla fija) y las fechas son relativas al día actual. Para volver a generarlos desde cero, ejecuta **`reiniciar-datos.bat`** y luego `iniciar.bat`. Ten en cuenta que esto borra la base local.
+
 ## Cuentas de demostración
 
-Solo existen en el entorno de desarrollo.
+Solo existen en el entorno de desarrollo. Todas las cuentas generadas usan la contraseña `Demo2026!`.
 
 | Rol | Correo | Contraseña |
 |---|---|---|
