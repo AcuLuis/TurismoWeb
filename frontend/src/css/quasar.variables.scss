@@ -1,25 +1,15 @@
-// Quasar SCSS (& Sass) Variables
-// --------------------------------------------------
-// To customize the look and feel of this app, you can override
-// the Sass/SCSS variables found in Quasar's source Sass/SCSS files.
+// Paleta de marca de TurismoGo. Los colores con texto blanco encima cumplen contraste WCAG AA.
 
-// Check documentation for full list of Quasar variables
+$primary: #0f766e; // verde azulado andino
+$secondary: #c2410c; // terracota
+$accent: #b45309; // ámbar oscuro
 
-// Your own variables (that are declared here) and Quasar's own
-// ones will be available out of the box in your .vue/.scss/.sass files
+$dark: #1f2937;
+$dark-page: #111827;
 
-// It's highly recommended to change the default colors
-// to match your app's branding.
-// Tip: Use the "Theme Builder" on Quasar's documentation website.
+$positive: #15803d;
+$negative: #b91c1c;
+$info: #0369a1;
+$warning: #f59e0b;
 
-$primary   : #1976D2;
-$secondary : #26A69A;
-$accent    : #9C27B0;
-
-$dark      : #1D1D1D;
-$dark-page : #121212;
-
-$positive  : #21BA45;
-$negative  : #C10015;
-$info      : #31CCEC;
-$warning   : #F2C037;
+$typography-font-family: 'Roboto', '-apple-system', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;

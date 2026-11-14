@@ -1,1 +1,91 @@
-// app global css in SCSS form
+// Estilos globales de TurismoGo
+
+:root {
+  --tg-fondo: #f8fafc;
+  --tg-borde: #e2e8f0;
+  --tg-texto-suave: #475569;
+  --tg-radio: 14px;
+}
+
+body {
+  background: var(--tg-fondo);
+  color: #0f172a;
+}
+
+// Contenedor centrado con ancho máximo
+.tg-contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.tg-contenedor--estrecho {
+  max-width: 760px;
+}
+
+.tg-titulo-pagina {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 599px) {
+    font-size: 1.4rem;
+  }
+}
+
+.tg-subtitulo {
+  color: var(--tg-texto-suave);
+  margin: 4px 0 0;
+}
+
+.tg-tarjeta {
+  border-radius: var(--tg-radio);
+  border: 1px solid var(--tg-borde);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  background: #fff;
+}
+
+.tg-texto-suave {
+  color: var(--tg-texto-suave);
+}
+
+.tg-etiqueta {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--tg-texto-suave);
+  font-weight: 500;
+}
+
+// Foco visible para navegación por teclado (accesibilidad)
+:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.55);
+  outline-offset: 2px;
+}
+
+// Texto solo para lectores de pantalla
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Respeta la preferencia de reducir animaciones
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

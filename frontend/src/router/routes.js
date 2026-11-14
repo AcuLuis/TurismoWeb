@@ -1,66 +1,32 @@
+// Rutas de la aplicación.
+// meta.requiereSesion: exige sesión iniciada. meta.roles: roles permitidos. meta.soloInvitados: solo sin sesión.
+// meta.titulo: título de la pestaña del navegador.
+
 const routes = [
   {
-    path: "/",
-    component: () => import("@/layouts/MainLayout.vue"),
+    path: '/',
+    component: () => import('@/layouts/AppLayout.vue'),
     children: [
-      { path: "", component: () => import("@/components/auth/LoginM.vue") },
-      {
-        path: "registerE",
-        component: () => import("@/components/auth/RegisterE.vue"),
-      },
-      {
-        path: "registerU",
-        component: () => import("@/components/auth/RegisterU.vue"),
-      },
-    ],
-  },
-  {
-    path: "/perfil1",
-    component: () => import("@/layouts/ELayaout.vue"),
-    children: [
-      {
-        path: "perfilE",
-        component: () => import("@/pages/enterprise/PerfilE.vue"),
-      },
-      {
-        path: "actividadesE",
-        component: () => import("@/pages/enterprise/TablaActividadesE.vue"),
-      },
-      {
-        path: "listadoE",
-        component: () => import("@/pages/enterprise/ListadoUsuarios.vue"),
-      },
-    ],
-  },
-  {
-    path: "/perfil2",
-    component: () => import("@/layouts/ULayout.vue"),
-    children: [
-      { path: "perfilU", component: () => import("@/pages/user/PerfilU.vue") },
-      {
-        path: "actividadesU",
-        component: () => import("@/pages/user/TablaActividadesU.vue"),
-      },
-    ],
-  },
-  {
-    path: "/principalE",
-    component: () => import("@/pages/enterprise/PrincipalE.vue"),
-  },
-  { path: "/principalU", component: () => import("@/pages/user/PrincipalU.vue") },
-  { path: "/principalA", component: () => import("@/pages/adm/PrincipalA.vue") },
-  {
-    path: "/Actividad_publica",
-    component: () => import("@/components/Empresa_Turismo/Actividad_publica.vue"),
-  },
-  {
-    path: "/Visualiza_Actividad",
-    component: () => import("@/components/Empresa_Turismo/Ver_actividades.vue"),
-  },
-  {
-    path: "/:catchAll(.*)*",
-    component: () => import("@/pages/ErrorNotFound.vue"),
-  },
-];
+      // Público
+      { path: '', name: 'inicio', component: () => import('@/pages/publico/InicioPage.vue'), meta: { titulo: 'Actividades turísticas en Perú' } },
 
-export default routes;
+      // Cuenta (cualquier rol)
+      { path: 'cuenta', name: 'cuenta', component: () => import('@/pages/cuenta/CuentaPage.vue'), meta: { titulo: 'Mi cuenta', requiereSesion: true } },
+    ],
+  },
+  {
+    path: '/',
+    component: () => import('@/layouts/AuthLayout.vue'),
+    children: [
+      { path: 'ingresar', name: 'ingresar', component: () => import('@/pages/auth/LoginPage.vue'), meta: { titulo: 'Ingresar', soloInvitados: true } },
+      { path: 'registro', name: 'registro', component: () => import('@/pages/auth/RegistroPage.vue'), meta: { titulo: 'Crear cuenta', soloInvitados: true } },
+    ],
+  },
+  {
+    path: '/:catchAll(.*)*',
+    component: () => import('@/pages/ErrorNotFound.vue'),
+    meta: { titulo: 'Página no encontrada' },
+  },
+]
+
+export default routes

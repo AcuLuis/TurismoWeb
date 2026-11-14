@@ -45,10 +45,14 @@ export default defineConfig((/* ctx */) => {
     },
 
     framework: {
-      config: {},
+      config: {
+        brand: { primary: '#0f766e' },
+        notify: { position: 'top', timeout: 3500, actions: [{ icon: 'close', color: 'white', round: true, 'aria-label': 'Cerrar' }] },
+        loadingBar: { color: 'warning', size: '3px' },
+      },
       lang: 'es',
       iconSet: 'material-icons',
-      plugins: [],
+      plugins: ['Notify', 'Dialog', 'Loading', 'LoadingBar'],
     },
 
     animations: [],
