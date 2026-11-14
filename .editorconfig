@@ -35,3 +35,8 @@ dotnet_naming_symbols.private_fields.applicable_kinds = field
 dotnet_naming_symbols.private_fields.applicable_accessibilities = private
 dotnet_naming_style.underscore_prefix.required_prefix = _
 dotnet_naming_style.underscore_prefix.capitalization = camel_case
+
+# Código generado por EF Core (migraciones): sin análisis de estilo/calidad
+[backend/src/TurismoGo.Infrastructure/Datos/Migraciones/*.cs]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none

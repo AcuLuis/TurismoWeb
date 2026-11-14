@@ -1,5 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <!-- Las consultas LINQ usan string.ToLower()/Contains() porque EF Core las traduce a SQL (LOWER/LIKE);
+         las sobrecargas con CultureInfo o StringComparison no son traducibles. -->
+    <NoWarn>$(NoWarn);CA1304;CA1311;CA1862</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="FluentValidation" />

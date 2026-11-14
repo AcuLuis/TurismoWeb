@@ -87,7 +87,7 @@ builder.Services
         var errores = ctx.ModelState
             .Where(e => e.Value?.Errors.Count > 0)
             .GroupBy(e => NormalizarCampo(e.Key))
-            .ToDictionary(g => g.Key, _ => new[] { "El valor no tiene un formato válido." });
+            .ToDictionary(g => g.Key, _ => MensajeFormatoInvalido);
         var problema = new ValidationProblemDetails(errores)
         {
             Status = StatusCodes.Status400BadRequest,
@@ -179,4 +179,5 @@ await app.RunAsync();
 public partial class Program
 {
     public const string PoliticaAuth = "auth";
+    private static readonly string[] MensajeFormatoInvalido = ["El valor no tiene un formato válido."];
 }
