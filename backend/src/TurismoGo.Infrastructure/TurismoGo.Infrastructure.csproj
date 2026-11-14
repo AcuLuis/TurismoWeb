@@ -10,4 +10,8 @@
     <ProjectReference Include="..\TurismoGo.Application\TurismoGo.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="TurismoGo.Tests" />
+  </ItemGroup>
+
 </Project>
