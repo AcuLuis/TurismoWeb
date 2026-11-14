@@ -1,7 +1,7 @@
 <template>
-  <figure class="grafico" :aria-label="titulo">
+  <figure class="grafico" :aria-labelledby="idTitulo">
     <div class="row items-center justify-between q-mb-sm">
-      <figcaption class="text-h6">{{ titulo }}</figcaption>
+      <h2 :id="idTitulo" class="text-h6 q-my-none">{{ titulo }}</h2>
       <q-btn-toggle
         v-model="vista"
         dense
@@ -65,7 +65,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, useId } from 'vue'
 import { formatMoneda, pluralizar } from '@/utils/formato'
 
 const props = defineProps({
@@ -75,6 +75,7 @@ const props = defineProps({
 })
 
 const vista = ref('grafico')
+const idTitulo = `grafico-${useId()}`
 
 /** Escala "redonda" para el eje Y. */
 const maximo = computed(() => {

@@ -115,7 +115,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import ActividadCard from '@/components/ActividadCard.vue'
 import ActividadCardSkeleton from '@/components/ActividadCardSkeleton.vue'
@@ -149,7 +149,8 @@ const filtros = computed(() => ({
   pagina: Number(route.query.pagina) || 1,
 }))
 
-const borrador = reactive({ destino: null, desde: '', hasta: '', precioMin: '', precioMax: '' })
+// ref (no reactive): se pasa completo por v-model a FiltrosCatalogo, que puede reemplazarlo
+const borrador = ref({ destino: null, desde: '', hasta: '', precioMin: '', precioMax: '' })
 const texto = ref(filtros.value.q)
 const destinos = ref([])
 const resultado = ref({ items: [], total: 0, pagina: 1, totalPaginas: 0 })
@@ -178,7 +179,7 @@ const filtrosActivos = computed(() => {
 })
 
 function sincronizarBorrador() {
-  Object.assign(borrador, {
+  Object.assign(borrador.value, {
     destino: filtros.value.destino,
     desde: filtros.value.desde,
     hasta: filtros.value.hasta,
@@ -196,7 +197,7 @@ function navegar(cambios) {
   router.push({ query })
 }
 
-const aplicar = () => navegar({ ...borrador })
+const aplicar = () => navegar({ ...borrador.value })
 const buscarTexto = (v) => navegar({ q: (v || '').trim() })
 const cambiarOrden = (orden) => navegar({ orden })
 const cambiarPagina = (pagina) => navegar({ pagina: pagina > 1 ? pagina : null })
