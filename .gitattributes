@@ -1,0 +1,17 @@
+# Normaliza finales de línea en el repositorio (LF), y deja que cada SO los adapte al hacer checkout.
+* text=auto eol=lf
+
+# Archivos de Visual Studio / Windows que deben mantener CRLF
+*.sln text eol=crlf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binarios
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary

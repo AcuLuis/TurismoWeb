@@ -1,0 +1,38 @@
+# --- Sistema operativo / editores ---
+.DS_Store
+Thumbs.db
+.thumbs.db
+.idea/
+.vs/
+*.suo
+*.user
+*.userprefs
+*.swp
+
+# --- Variables de entorno y secretos locales ---
+.env
+.env.local
+.env.*.local
+!.env.example
+appsettings.*.local.json
+
+# --- .NET ---
+[Bb]in/
+[Oo]bj/
+TestResults/
+*.trx
+coverage*.xml
+.vs/
+
+# --- Node / Quasar ---
+node_modules/
+frontend/dist/
+frontend/.quasar/
+frontend/quasar.config.*.temporary.compiled*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Varios ---
+*.log
