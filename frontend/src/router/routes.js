@@ -17,6 +17,14 @@ const routes = [
 
       // Turista
       { path: 'mis-reservas', name: 'mis-reservas', component: () => import('@/pages/turista/MisReservasPage.vue'), meta: { titulo: 'Mis reservas', requiereSesion: true, roles: ['Turista'] } },
+
+      // Empresa
+      { path: 'empresa', name: 'empresa-panel', component: () => import('@/pages/empresa/PanelEmpresaPage.vue'), meta: { titulo: 'Panel de empresa', requiereSesion: true, roles: ['Empresa'] } },
+      { path: 'empresa/actividades', name: 'empresa-actividades', component: () => import('@/pages/empresa/ActividadesEmpresaPage.vue'), meta: { titulo: 'Mis actividades', requiereSesion: true, roles: ['Empresa'] } },
+      { path: 'empresa/actividades/nueva', name: 'empresa-actividad-nueva', component: () => import('@/pages/empresa/ActividadFormPage.vue'), meta: { titulo: 'Nueva actividad', requiereSesion: true, roles: ['Empresa'] } },
+      { path: 'empresa/actividades/:id(\\d+)/editar', name: 'empresa-actividad-editar', component: () => import('@/pages/empresa/ActividadFormPage.vue'), meta: { titulo: 'Editar actividad', requiereSesion: true, roles: ['Empresa'] } },
+      { path: 'empresa/reservas', name: 'empresa-reservas', component: () => import('@/pages/empresa/ReservasRecibidasPage.vue'), meta: { titulo: 'Reservas recibidas', requiereSesion: true, roles: ['Empresa'] } },
+      { path: 'empresa/perfil', name: 'empresa-perfil', component: () => import('@/pages/empresa/PerfilEmpresaPage.vue'), meta: { titulo: 'Perfil de empresa', requiereSesion: true, roles: ['Empresa'] } },
     ],
   },
   {
